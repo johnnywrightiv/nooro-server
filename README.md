@@ -19,12 +19,14 @@ git clone <repository-url>
 cd <repository-folder>
 ```
 
+
 ### 2. Install Dependencies
 Install all the necessary dependencies:
 
 ```
 npm install
 ```
+
 
 ### 3. Set Up Prisma and Database
 
@@ -50,16 +52,15 @@ CREATE DATABASE nooro_tasks;
 
 #### Step 2: Update the .env File with Your Credentials
 
-In the root of the project, you’ll find a `.env` file. Update the `DATABASE_URL` to include your own MySQL credentials. Example:
+In the root of the project, create a `.env` file. Update the `DATABASE_URL` to include your own MySQL credentials. Example:
 
 ```
 DATABASE_URL="mysql://<your_username>:<your_password>@localhost:3306/nooro_tasks"
 ```
 
-Replace `<your_username>` with your MySQL username.
+Replace `<your_username>` with your MySQL username (root by default).
 Replace `<your_password>` with your MySQL password.
 
-If you're using a local MySQL server, the default `localhost:3306` should be fine. If you're using a different host or port, update accordingly.
 
 #### Step 3: Run Prisma Migrations
 
@@ -79,11 +80,12 @@ Generate Prisma Client to interact with the database:
 npx prisma generate
 ```
 
+
 ### 4. Run the Server
 Start the Express API server:
 
 ```
-npm run dev
+npx tsx src/app.ts 
 ```
 
 The API will be running at `http://localhost:4000`.
@@ -98,7 +100,7 @@ You can now test the following API endpoints using a tool like Postman or your b
   - Response: Returns an array of tasks.
 
 - **Update a task** (PUT /api/tasks/:id):
-  - Request Body: `{ "completed": true }`
+  - Request Body: `{ "title": "Updated Task Title", "color": "green", "completed": true }`
   - Response: The updated task.
 
 - **Delete a task** (DELETE /api/tasks/:id):
@@ -107,7 +109,7 @@ You can now test the following API endpoints using a tool like Postman or your b
 ### 6. Using Prisma Client
 Prisma Client is generated when you run the `prisma generate` command. You can use it in your application to query and manipulate the database.
 
-You can use the `src/insert.Task.ts` file to insert a into the database using Prisma. You can run the file using:
+You can use the `src/insert.Task.ts` file to insert a task into the database using Prisma. You can run the file using:
 
 ```
 npx ts-node src/insertTask.ts

@@ -24,11 +24,11 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
 
 export const updateTask = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
-  const { completed }: { completed: boolean } = req.body;
+  const { completed, title, color }: { completed: boolean; title: string; color?: string } = req.body;
   try {
     const updatedTask = await prisma.tasks.update({
       where: { id: Number(id) },
-      data: { completed },
+      data: { completed, title, color },
     });
     res.json(updatedTask);
   } catch (error) {
