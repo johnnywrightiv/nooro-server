@@ -56,7 +56,7 @@ In the root of the project, you’ll find a `.env` file. Update the `DATABASE_UR
 DATABASE_URL="mysql://<your_username>:<your_password>@localhost:3306/nooro_tasks"
 ```
 
-Replace `<your_username>` with your MySQL username (e.g., `nooro_user`).
+Replace `<your_username>` with your MySQL username.
 Replace `<your_password>` with your MySQL password.
 
 If you're using a local MySQL server, the default `localhost:3306` should be fine. If you're using a different host or port, update accordingly.
