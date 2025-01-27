@@ -22,6 +22,24 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+export const getTaskById = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  try {
+    const task = await prisma.tasks.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!task) {
+      res.status(404).json({ error: 'Task not found' });
+      return;
+    }
+
+    res.json(task);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching the task' });
+  }
+};
+
 export const updateTask = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
   const { completed, title, color }: { completed: boolean; title: string; color?: string } = req.body;
