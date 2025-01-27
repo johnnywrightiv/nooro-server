@@ -15,7 +15,7 @@ Follow these steps to set up the server and the database.
 Clone the repository to your local machine:
 
 ```
-git clone <repository-url>
+git clone https://github.com/johnnywrightiv/nooro-server
 cd <repository-folder>
 ```
 
